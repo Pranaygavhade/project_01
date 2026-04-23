@@ -21,12 +21,29 @@ export default {
       },
       animation: {
         "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "float": "float 3s ease-in-out infinite",
+        "fadeIn": "fadeIn 1s ease-out forwards",
+        "fillBar": "fillBar 1.5s ease-out",
       },
       keyframes: {
         "glow-pulse": {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.5" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "fadeIn": {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        "fillBar": {
+          "0%": { width: "0" },
+        },
+      },
+      backdropBlur: {
+        xs: "2px",
       },
     },
   },

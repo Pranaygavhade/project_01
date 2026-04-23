@@ -5,14 +5,37 @@ import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  if (!mounted) {
+    return (
+      <nav className="fixed top-0 left-0 right-0 z-50 py-6">
+        <div className="container mx-auto px-6 flex justify-between items-center">
+          <div className="text-2xl font-bold gradient-text">PG</div>
+          <div className="hidden md:flex gap-8">
+            {["Origin", "Growth", "Projects", "Future", "Contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-gray-300 hover:text-neonPurple transition-colors relative group"
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   const navItems = ["Origin", "Growth", "Projects", "Future", "Contact"];
 

@@ -178,7 +178,7 @@ export default function Contact() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 1 }}
         >
-          © 2024 Pranay Gavhade. Built with passion and code.
+          © {new Date().getFullYear()} Pranay Gavhade. Built with passion and code.
         </motion.p>
       </div>
     </section>

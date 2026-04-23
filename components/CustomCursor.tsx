@@ -6,8 +6,11 @@ import { motion } from "framer-motion";
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState("default");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    
     const mouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -31,6 +34,11 @@ export default function CustomCursor() {
       });
     };
   }, []);
+
+  // Don't render on server
+  if (!mounted) {
+    return null;
+  }
 
   const variants = {
     default: {
